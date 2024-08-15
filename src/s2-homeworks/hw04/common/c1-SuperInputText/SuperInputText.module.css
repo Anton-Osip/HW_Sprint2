@@ -2,19 +2,35 @@
 }
 
 .input {
+    width: 372px;
+    height: 36px;
+    padding: 5px 15px;
 }
 
 .inputWrapper {
+    position: relative;
 }
 
 .superInput {
 }
 
 .errorInput {
+    border: 2px solid rgb(204, 20, 57);
+
 }
 
 .errorInput:focus {
+    outline: none;
 }
 
 .error {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    color: rgb(204, 20, 57);
+    font-family: Montserrat, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0;
 }
