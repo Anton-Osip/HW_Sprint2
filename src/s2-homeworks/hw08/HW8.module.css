@@ -1,10 +1,13 @@
 .item {
+    border-bottom: 1px solid rgb(229, 229, 229);
 }
 
 .item:last-of-type {
 }
 
 .users {
+    width: 100%;
+    border-spacing:0;
 }
 
 .buttonsContainer {
@@ -14,10 +17,27 @@
 }
 
 .thead {
+    background: rgb(229, 229, 229);
 }
 
 .nameCol {
+    color: rgb(0, 0, 0);
+    font-family: Roboto,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: left;
+    padding: 16px 0 16px 17px;
 }
 
 .ageCol {
+    color: rgb(0, 0, 0);
+    font-family: Roboto,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: left;
+    padding: 16px 0 16px 17px;
 }
