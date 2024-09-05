@@ -38,7 +38,7 @@ function Clock() {
 
     const stringTime = `${formatedTime(date.getHours())}:${formatedTime(date.getMinutes())}:${formatedTime(date.getSeconds())}` ||
         <br/> // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01) // пишут студенты
-    const stringDate = `${formatedTime(date.getDay() + 1)}:${formatedTime(date.getMonth() + 1)}:${formatedTime(date.getFullYear())}` ||
+    const stringDate = `${formatedTime(date.getDay() + 1)}.${formatedTime(date.getMonth() + 1)}.${formatedTime(date.getFullYear())}` ||
         <br/> // день.месяц.год (01.02.2022) // пишут студенты, варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
@@ -47,7 +47,7 @@ function Clock() {
     }).format(date.getDay()) || <br/> // пишут студенты
     const stringMonth =new Intl.DateTimeFormat("en-US", {
         month: "long"
-    }).format(date.getDay()) || <br/> // пишут студенты
+    }).format() || <br/> // пишут студенты
 
     return (
         <div className = {s.clock}>
