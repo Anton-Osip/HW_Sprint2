@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
-import {restoreState, saveState} from '../hw06/localStorage/localStorage'
+import {restoreState} from '../hw06/localStorage/localStorage'
 import s from './Clock.module.css'
 
 function Clock() {
