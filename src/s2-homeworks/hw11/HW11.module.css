@@ -2,7 +2,17 @@
 }
 
 .wrapper {
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .number {
+    font-family: Montserrat,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+
 }
