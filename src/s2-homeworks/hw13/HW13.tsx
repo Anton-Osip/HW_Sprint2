@@ -7,6 +7,8 @@ import success200 from './images/200.svg'
 import error400 from './images/400.svg'
 import error500 from './images/500.svg'
 import errorUnknown from './images/error.svg'
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 /*
 * 1 - дописать функцию send
@@ -19,8 +21,10 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const send = (x?: boolean | null) => () => {
+        setIsLoading(true)
         const url =
             x === null
                 ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
@@ -36,72 +40,83 @@ const HW13 = () => {
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
-                // дописать
+                setInfo(res.data.info)
+                setText(res.data.errorText)
 
             })
             .catch((e) => {
-                // дописать
+                if (e.response.status === 500) {
+                    setImage(error500)
+                } else if (e.response.status === 400) {
+                    setImage(error400)
+                } else {
+                    setImage(errorUnknown)
+                }
+                setInfo(e.message)
 
+            })
+            .finally(() => {
+                setIsLoading(false)
             })
     }
 
     return (
-        <div id={'hw13'}>
-            <div className={s2.hwTitle}>Homework #13</div>
+        <div id = {'hw13'}>
+            <div className = {s2.hwTitle}>Homework #13</div>
 
-            <div className={s2.hw}>
-                <div className={s.buttonsContainer}>
+            <div className = {s2.hw}>
+                <div className = {s.buttonsContainer}>
                     <SuperButton
-                        id={'hw13-send-true'}
-                        onClick={send(true)}
-                        xType={'secondary'}
-                        // дописать
+                        id = {'hw13-send-true'}
+                        onClick = {send(true)}
+                        xType = {'secondary'}
+                        disabled = {isLoading}
 
                     >
                         Send true
                     </SuperButton>
                     <SuperButton
-                        id={'hw13-send-false'}
-                        onClick={send(false)}
-                        xType={'secondary'}
-                        // дописать
+                        id = {'hw13-send-false'}
+                        onClick = {send(false)}
+                        xType = {'secondary'}
+                        disabled = {isLoading}
 
                     >
                         Send false
                     </SuperButton>
                     <SuperButton
-                        id={'hw13-send-undefined'}
-                        onClick={send(undefined)}
-                        xType={'secondary'}
-                        // дописать
+                        id = {'hw13-send-undefined'}
+                        onClick = {send(undefined)}
+                        xType = {'secondary'}
+                        disabled = {isLoading}
 
                     >
                         Send undefined
                     </SuperButton>
                     <SuperButton
-                        id={'hw13-send-null'}
-                        onClick={send(null)} // имитация запроса на не корректный адрес
-                        xType={'secondary'}
-                        // дописать
+                        id = {'hw13-send-null'}
+                        onClick = {send(null)} // имитация запроса на не корректный адрес
+                        xType = {'secondary'}
+                        disabled = {isLoading}
 
                     >
                         Send null
                     </SuperButton>
                 </div>
 
-                <div className={s.responseContainer}>
-                    <div className={s.imageContainer}>
-                        {image && <img src={image} className={s.image} alt="status"/>}
+                <div className = {s.responseContainer}>
+                    <div className = {s.imageContainer}>
+                        {image && <img src = {image} className = {s.image} alt = "status"/>}
                     </div>
 
-                    <div className={s.textContainer}>
-                        <div id={'hw13-code'} className={s.code}>
+                    <div className = {s.textContainer}>
+                        <div id = {'hw13-code'} className = {s.code}>
                             {code}
                         </div>
-                        <div id={'hw13-text'} className={s.text}>
+                        <div id = {'hw13-text'} className = {s.text}>
                             {text}
                         </div>
-                        <div id={'hw13-info'} className={s.info}>
+                        <div id = {'hw13-info'} className = {s.info}>
                             {info}
                         </div>
                     </div>
