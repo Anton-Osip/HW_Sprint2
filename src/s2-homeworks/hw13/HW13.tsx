@@ -47,12 +47,15 @@ const HW13 = () => {
             .catch((e) => {
                 if (e.response.status === 500) {
                     setImage(error500)
+
                     setCode(e.response.status)
                     setText('эмитация ошибки на сервере')
+                    setInfo('ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)')
                 } else if (e.response.status === 400) {
                     setImage(error400)
                     setCode(e.response.status)
                     setText('Ты не отправил success в body вообще!')
+                    setInfo('ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
 
                 } else {
                     setImage(errorUnknown)
