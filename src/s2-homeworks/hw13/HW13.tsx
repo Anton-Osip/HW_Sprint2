@@ -59,9 +59,11 @@ const HW13 = () => {
 
                 } else {
                     setImage(errorUnknown)
-                }
-                setInfo(e.message)
+                    setCode('Error!')
+                    setText('Network Error')
+                    setInfo( 'AxiosError')
 
+                }
             })
             .finally(() => {
                 setIsLoading(false)
