@@ -47,12 +47,12 @@ const HW14 = () => {
     }
 
     const onChangeText = (value: string) => {
-        setFind(prevState => value)
+        setFind( value)
         // делает студент
 
         // добавить/заменить значение в квери урла
 
-        setSearchParams({'find': find})
+        setSearchParams({'find': value})
         //
     }
 
