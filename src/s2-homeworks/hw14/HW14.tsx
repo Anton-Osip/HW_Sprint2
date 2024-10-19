@@ -15,7 +15,8 @@ import {useSearchParams} from 'react-router-dom'
 
 const getTechs = (find: string) => {
     return axios
-        .get<{ techs: string[] }>(
+        // .get<{ techs: string[] }>(
+        .get(
             'https://samurai.it-incubator.io/api/3.0/homework/test2',
             {params: {find}}
         )
@@ -32,23 +33,26 @@ const HW14 = () => {
 
     const sendQuery = (value: string) => {
         setLoading(true)
-        getTechs(value)
+        getTechs(find)
             .then((res) => {
                 // делает студент
 
                 // сохранить пришедшие данные
-
+                setTechs(res?.data.techs)
                 //
+            })
+            .finally(() => {
+                setLoading(false)
             })
     }
 
     const onChangeText = (value: string) => {
-        setFind(value)
+        setFind(prevState => value)
         // делает студент
 
         // добавить/заменить значение в квери урла
-        // setSearchParams(
 
+        setSearchParams({'find': find})
         //
     }
 
@@ -59,24 +63,24 @@ const HW14 = () => {
     }, [])
 
     const mappedTechs = techs.map(t => (
-        <div key={t} id={'hw14-tech-' + t} className={s.tech}>
+        <div key = {t} id = {'hw14-tech-' + t} className = {s.tech}>
             {t}
         </div>
     ))
 
     return (
-        <div id={'hw14'}>
-            <div className={s2.hwTitle}>Homework #14</div>
+        <div id = {'hw14'}>
+            <div className = {s2.hwTitle}>Homework #14</div>
 
-            <div className={s2.hw}>
+            <div className = {s2.hw}>
                 <SuperDebouncedInput
-                    id={'hw14-super-debounced-input'}
-                    value={find}
-                    onChangeText={onChangeText}
-                    onDebouncedChange={sendQuery}
+                    id = {'hw14-super-debounced-input'}
+                    value = {find}
+                    onChangeText = {onChangeText}
+                    onDebouncedChange = {sendQuery}
                 />
 
-                <div id={'hw14-loading'} className={s.loading}>
+                <div id = {'hw14-loading'} className = {s.loading}>
                     {isLoading ? '...ищем' : <br/>}
                 </div>
 
