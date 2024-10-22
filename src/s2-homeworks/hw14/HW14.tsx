@@ -14,6 +14,7 @@ import {useSearchParams} from 'react-router-dom'
 * */
 
 const getTechs = (find: string) => {
+    console.log(find)
     return axios
         // .get<{ techs: string[] }>(
         .get(
@@ -33,7 +34,8 @@ const HW14 = () => {
 
     const sendQuery = (value: string) => {
         setLoading(true)
-        getTechs(find)
+
+        getTechs(value)
             .then((res) => {
                 // делает студент
 
@@ -47,11 +49,10 @@ const HW14 = () => {
     }
 
     const onChangeText = (value: string) => {
-        setFind( value)
+        setFind(value)
         // делает студент
 
         // добавить/заменить значение в квери урла
-
         setSearchParams({'find': value})
         //
     }
