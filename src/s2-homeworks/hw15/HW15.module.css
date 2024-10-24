@@ -1,25 +1,41 @@
 .tech {
     width: 50vw;
+    font-size: 16px;
+    line-height: 24px;
+
 }
 
 .developer {
-
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .techHeader {
     width: 50vw;
+
+
+    font-size: 24px;
 }
 
 .developerHeader {
 
+    width: 50vw;
+
+    font-size: 24px;
 }
 
 .row {
     display: flex;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 12px 0 !important;
+    margin: 0 !important;
 }
 
 .rowHeader {
+    box-sizing: border-box;
     display: flex;
+    padding: 11px 17px !important;
+    background: #E5E5E5;
 }
 
 .loading {

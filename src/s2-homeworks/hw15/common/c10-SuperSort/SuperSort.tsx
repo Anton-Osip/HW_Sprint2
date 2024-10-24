@@ -1,9 +1,11 @@
 import React from 'react'
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 // добавить в проект иконки и импортировать
-const downIcon = '[\\/]'
-const upIcon = '[/\\]'
-const noneIcon = '[--]'
+const downIcon = <ArrowDropDownIcon/>
+const upIcon = <ArrowDropUpIcon/>
+const noneIcon = <UnfoldMoreIcon/>
 
 export type SuperSortPropsType = {
     id?: string
@@ -14,7 +16,15 @@ export type SuperSortPropsType = {
 
 export const pureChange = (sort: string, down: string, up: string) => {
     // пишет студент, sort: (click) => down (click) => up (click) => '' (click) => down ...
-    return up // исправить
+    if (sort === '') {
+        return down
+    } else if (sort === down) {
+        return up
+    } else if (sort === up) {
+        return ''
+    } else {
+        return down
+    }
 }
 
 const SuperSort: React.FC<SuperSortPropsType> = (
@@ -36,17 +46,8 @@ const SuperSort: React.FC<SuperSortPropsType> = (
             : noneIcon
 
     return (
-        <span
-            id={id + '-sort-' + value}
-            onClick={onChangeCallback}
-        >
-            {/*сделать иконку*/}
-            {/*<img*/}
-            {/*    id={id + '-icon-' + sort}*/}
-            {/*    src={icon}*/}
-            {/*/>*/}
-
-            {icon} {/*а это убрать*/}
+        <span id = {id + '-sort-' + value} onClick = {onChangeCallback}>
+            {icon}
         </span>
     )
 }

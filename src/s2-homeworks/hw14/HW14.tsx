@@ -14,7 +14,6 @@ import {useSearchParams} from 'react-router-dom'
 * */
 
 const getTechs = (find: string) => {
-    console.log(find)
     return axios
         // .get<{ techs: string[] }>(
         .get(
